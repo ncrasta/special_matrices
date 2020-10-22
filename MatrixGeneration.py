@@ -33,7 +33,7 @@ class MatrixGeneration:
                 u = u / np.linalg.norm(u)
                 S = self.skew_symmetric_matrix(u)
                 In = np.eye(dim)
-                R = np.dot((In - S), (In + S).I)
+                R = np.dot((In - S), np.linalg.inv(In + S))
                 return R
         else:
             raise ValueError('Dimension {} is not supported. Use 2 or 3 instead'.format(dim))

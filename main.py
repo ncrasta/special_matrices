@@ -1,11 +1,12 @@
 #! /usr/bin python
 import numpy as np
 from MatrixCheck import MatrixCheck
-
+from MatrixGeneration import MatrixGeneration
 
 if __name__ == "__main__":
     # Matrix check
     mc = MatrixCheck()
+    mg = MatrixGeneration()
     print("Diagonal matrix from a vector:")
     D = np.diag([1, 3, 5, 7])
     print(D)
@@ -43,3 +44,7 @@ if __name__ == "__main__":
         print("DD1 is a Diagonally Dominant matrix")
     else:
         print("DD1 is not a Diagonally Dominant matrix")
+
+    print("Random rotation matrix ")
+    print(mg.random_rotation_matrix(3))
+
