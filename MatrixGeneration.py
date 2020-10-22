@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class MatrixGeneration:
+class MatrixGeneration(object):
     @staticmethod
     def exchange_matrix(self, n):
         E = np.zeros((n, n))

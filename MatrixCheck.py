@@ -2,7 +2,7 @@ import numpy as np
 from MatrixGeneration import MatrixGeneration
 
 
-class MatrixCheck:
+class MatrixCheck(object):
     @staticmethod
     def is_square_matrix(A) -> bool:
         if A.ndim == 2 and A.shape[0] == A.shape[1]:
