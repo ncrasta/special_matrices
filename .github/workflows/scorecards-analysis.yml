@@ -30,15 +30,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
         with:
-           languages: python, cpp
-
+          languages: python, cpp
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
+
+    #steps:
+    #  - name: Checkout repository
+    #    uses: actions/checkout@v2
+
+      # Initializes the CodeQL tools for scanning.
+    #  - name: Initialize CodeQL
+    #    uses: github/codeql-action/init@v1
+    #    with:
+    #       languages: python, cpp
+
+    #  - name: Perform CodeQL Analysis
+    #    uses: github/codeql-action/analyze@v1
 
   analysis:
     name: Scorecards analysis
