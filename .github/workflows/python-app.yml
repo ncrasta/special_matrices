@@ -40,7 +40,7 @@ jobs:
     - name: Step to run on failure
       if: ${{ failure() }}$
       run: |
-        curl --request POST --url ${{ GITHUB_API_URL }}/repos/${{ github.repository }}/issues \
+        curl --request POST --url ${{ github.api_url }}/repos/${{ github.repository }}/issues \
         --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
         --header 'content-type: application/python' \
         --data '{ "title": "Issue created due to workflow failure: ${{ github.actor }} ${{ github.run_id }}",
