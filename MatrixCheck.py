@@ -1,5 +1,5 @@
 import numpy as np
-from MatrixGeneration import MatrixGeneration
+from MatrixGeneration import MatrixGeneration as mg
 
 
 class MatrixCheck(object):
