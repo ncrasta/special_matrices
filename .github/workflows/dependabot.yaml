@@ -1,6 +1,8 @@
 # Basic dependabot.yml file with
 # minimum configuration for two package managers
 
+permisions: read-all
+
 version: 2
 updates:
   # Enable version updates for Docker
