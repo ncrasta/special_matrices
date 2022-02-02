@@ -27,6 +27,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install numpy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISABLE_ERRORS: true';
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
