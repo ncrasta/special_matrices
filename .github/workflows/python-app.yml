@@ -19,6 +19,9 @@ jobs:
     steps:
     - name: Checkout Github Action
       uses: actions/checkout@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISABLE_ERRORS: true';
 
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
