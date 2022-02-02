@@ -1,0 +1,81 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python application
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 pytest
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Test with pytest
+      run: |
+        pytest
+  
+    analysis:
+      name: OSSF Scorecard action
+      uses: ossf/scorecard-action@v1.0.3
+      runs-on: ubuntu-latest
+      permissions:
+        # Needed to upload the results to code-scanning dashboard.
+        security-events: write
+        actions: read
+        contents: read
+        steps:
+        - name: "Checkout code"
+          uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2.4.0
+          with:
+            persist-credentials: false
+
+        - name: "Run analysis"
+          uses: ossf/scorecard-action@c8416b0b2bf627c349ca92fc8e3de51a64b005cf # v1.0.2
+          with:
+          results_file: results.sarif
+          results_format: sarif
+          # Read-only PAT token. To create it,
+          # follow the steps in https://github.com/ossf/scorecard-action#pat-token-creation.
+          repo_token: ${{ secrets.SCORECARD_READ_TOKEN }}
+          # Publish the results for public repositories to enable scorecard badges. For more details, see
+          # https://github.com/ossf/scorecard-action#publishing-results. 
+          # For private repositories, `publish_results` will automatically be set to `false`, regardless 
+          # of the value entered here.
+          publish_results: true
+
+        # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
+        # format to the repository Actions tab.
+        - name: "Upload artifact"
+          uses: actions/upload-artifact@82c141cc518b40d92cc801eee768e7aafc9c2fa2 # v2.3.1
+          with:
+            name: SARIF file
+            path: results.sarif
+            retention-days: 5
+      
+        # Upload the results to GitHub's code scanning dashboard.
+        - name: "Upload to code-scanning"
+          uses: github/codeql-action/upload-sarif@5f532563584d71fdef14ee64d17bafb34f751ce5 # v1.0.26
+          with:
+          sarif_file: results.sarif
+      
