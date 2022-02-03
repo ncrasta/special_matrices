@@ -4,12 +4,8 @@
 
 ## 1. GitHub Stats
 ![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=crasta&show_icons=true)
+![AppVeyor](https://img.shields.io/appveyor/build/crasta/matrix_generation_checking?label=GeT&logo=Github&logoColor=%23ff0000&style=flat-square)
 
-## 3. Contributors Badge
-<a href="https://github.com/crasta/Python/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=crasta/Python" />
-</a>
-Made with [contributors-img](https://contrib.rocks).
 
 This class is to generate and check some special types of matrices. 
 
