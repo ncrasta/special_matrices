@@ -5,8 +5,14 @@
 ## 1. GitHub Stats
 ![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=crasta&show_icons=true)
 
+## 2. Most Used Languages
+![Your Repository's Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=crasta&theme=blue-green)
 
-
+## 3. Contributors Badge
+<a href="https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=crasta/Python" />
+</a>
+Made with [contributors-img](https://contrib.rocks).
 
 This class is to generate and check some special types of matrices. 
 
