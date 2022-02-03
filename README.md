@@ -5,9 +5,6 @@
 ## 1. GitHub Stats
 ![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=crasta&show_icons=true)
 
-## 2. Most Used Languages
-![Your Repository's Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=crasta&theme=blue-green)
-
 ## 3. Contributors Badge
 <a href="https://github.com/crasta/Python/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=crasta/Python" />
