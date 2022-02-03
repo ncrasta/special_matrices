@@ -9,7 +9,7 @@
 ![Your Repository's Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=crasta&theme=blue-green)
 
 ## 3. Contributors Badge
-<a href="https://github.com/Tanu-N-Prabhu/Python/graphs/contributors">
+<a href="https://github.com/crasta/Python/graphs/contributors">
 <img src="https://contrib.rocks/image?repo=crasta/Python" />
 </a>
 Made with [contributors-img](https://contrib.rocks).
