@@ -4,7 +4,8 @@
 
 ## 1. GitHub Stats
 ![Your Repository's Stats](https://github-readme-stats.vercel.app/api?username=crasta&show_icons=true)
-![AppVeyor](https://img.shields.io/appveyor/build/crasta/matrix_generation_checking?label=GeT&logo=Github&logoColor=%23ff0000&style=flat-square)
+
+![](https://img.shields.io/appveyor/build/crasta/matrix_generation_checking?label=GeT&logo=Github&logoColor=%23ff0000&style=flat-square)
 
 
 This class is to generate and check some special types of matrices. 
