@@ -1,0 +1,20 @@
+name: CI Notify
+on:
+  workflow_run:
+    workflows: ["CI build"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs_on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Step to run on failure
+        run: |
+          curl --request POST --url ${{ github.api_url }}/repos/${{ github.repository }}/issues \
+               --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+               --header 'content-type: application/python' \
+               --data '{ "title": "Issue created due to workflow failure: ${{ github.actor }} ${{ github.run_id }}",
+                  "body": "This issue was automatically created by the GitHub Action workflow 
+                  **${{ github.workflow}}**. \n\n due to failure in run: _${{ github.run_id }}_."}'
