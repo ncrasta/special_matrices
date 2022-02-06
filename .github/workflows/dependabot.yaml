@@ -1,12 +1,13 @@
+version: 2
 name: Dependabot
 on:
   push
 
 permisions: read-all
 
-version: 2
 updates:
-  - package-ecosystem: "docker"
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
