@@ -1,4 +1,6 @@
 name: Dependabot
+on:
+  push
 
 permisions: read-all
 
