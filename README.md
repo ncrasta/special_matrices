@@ -4,7 +4,7 @@
 
 [![CI build](https://github.com/crasta/matrix_generation_checking/actions/workflows/python-app.yml/badge.svg)](https://github.com/crasta/matrix_generation_checking/actions/workflows/python-app.yml) [![CodeQL](https://github.com/ossf/scorecard-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ossf/scorecard-action/actions/workflows/codeql-analysis.yml) [![Scorecards supply-chain security](https://github.com/crasta/matrix_generation_checking/actions/workflows/scorecards-analysis.yml/badge.svg)](https://github.com/crasta/matrix_generation_checking/actions/workflows/scorecards-analysis.yml)
 
-![NVIDIA](https://img.shields.io/badge/NVIDIA-JETSON-XAVIER?style=for-the-badge&logo=nvidia&logoColor=green)
+![NVIDIA](https://img.shields.io/badge/NVIDIA?style=for-the-badge&logo=nvidia&logoColor=green)
 
 # Generation and checking of special types of matrices
 
