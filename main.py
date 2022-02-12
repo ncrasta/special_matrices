@@ -1,3 +1,4 @@
+
 #! /usr/bin python
 import numpy as np
 from MatrixCheck import MatrixCheck
@@ -21,7 +22,7 @@ if __name__ == '__main__':
         if mc.is_nillpotent_matrix(Ji):
             print('Ji is a Nillpotent matrix')
         else:
-            print('Ji is not a Nillpotent matrix')
+            print('Ji is not a Nillpotent matrix') # asfas
 
     B = np.array([[6, 7, 8, 9],
                   [4, 6, 7, 8],
