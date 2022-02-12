@@ -36,19 +36,19 @@ repos:
     hooks:
     -   id: clang-format
 
--   repo: local
-    hooks:
-    -   id: flake8-local
-        name: Run flake8
-        entry: flake8
-        language: python
-    -   id: mypy
-        name: Run mypy
-        entry: mypy
-        language: system
-    -   id: autoflake
-        name: Remove unsued imports
-        entry: bash -c 'autoflake "@$"; git add -u' --
-        language: python
-        args: [ "--in-place", "--remove-all-unused-imports"]
-        files: \.py$
+#-   repo: local
+#    hooks:
+#    -   id: flake8-local
+#        name: Run flake8
+#        entry: flake8
+#        language: python
+#    -   id: mypy
+#        name: Run mypy
+#        entry: mypy
+#        language: system
+#    -   id: autoflake
+#        name: Remove unsued imports
+#        entry: bash -c 'autoflake "@$"; git add -u' --
+#        language: python
+#        args: [ "--in-place", "--remove-all-unused-imports"]
+#        files: \.py$
