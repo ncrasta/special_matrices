@@ -1,3 +1,4 @@
+
 #! /usr/bin python
 import numpy as np
 from MatrixCheck import MatrixCheck
@@ -21,7 +22,7 @@ if __name__ == '__main__':
         if mc.is_nillpotent_matrix(Ji):
             print('Ji is a Nillpotent matrix')
         else:
-            print('Ji is not a Nillpotent matrix')
+            print('Ji is not a Nillpotent matrix') # asfas
 
     B = np.array([[6, 7, 8, 9],
                   [4, 6, 7, 8],
@@ -46,4 +47,4 @@ if __name__ == '__main__':
         print('DD1 is not a Diagonally Dominant matrix')
 
     print('Random rotation matrix ')
-    print(mg.random_rotation_matrix(3))
+    print(mg.random_rotation_matrix(3))  # random rotation matrix
