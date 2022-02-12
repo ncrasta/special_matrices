@@ -46,4 +46,4 @@ if __name__ == '__main__':
         print('DD1 is not a Diagonally Dominant matrix')
 
     print('Random rotation matrix ')
-    print(mg.random_rotation_matrix(3))
+    print(mg.random_rotation_matrix(3))  # random rotation matrix
