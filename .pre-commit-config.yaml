@@ -1,5 +1,6 @@
-fail_fast: true
-stages: [commit, push]
+#fail_fast: true
+#stages: [commit, push]
+
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.1.0
@@ -9,20 +10,45 @@ repos:
     -   id: check-docstring-first
     -   id: check-json
     -   id: check-added-large-files
+        args: ['--maxkb=1000']
     -   id: check-yaml
     -   id: debug-statements
     -   id: name-tests-test
         name: Test files start with test_
     -   id: double-quote-string-fixer
     -   id: requirements-txt-fixer
+
 -   repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:
     -   id: flake8
         args: ['--ignore=E129,E2', '--count', '--max-line-length=120', '--show-source', '--statistics']
         additional_dependencies: [flake8-typing-imports==1.12.0]
+
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.931
     hooks:
     -   id: mypy
         additional_dependencies: [types-all]
+
+-   repo: https://github.com/pre-commit/mirrors-clang-format
+    rev: v13.0.0
+    hooks:
+    -   id: clang-format
+
+#-   repo: local
+#    hooks:
+#    -   id: flake8-local
+#        name: Run flake8
+#        entry: flake8
+#        language: python
+#    -   id: mypy
+#        name: Run mypy
+#        entry: mypy
+#        language: system
+#    -   id: autoflake
+#        name: Remove unsued imports
+#        entry: bash -c 'autoflake "@$"; git add -u' --
+#        language: python
+#        args: [ "--in-place", "--remove-all-unused-imports"]
+#        files: \.py$
