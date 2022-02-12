@@ -32,7 +32,7 @@ repos:
         additional_dependencies: [types-all]
 
 -   repo: https://github.com/pre-commit/mirrors-clang-format
-    rev: 13.0.0
+    rev: v13.0.0
     hooks:
     -   id: clang-format
 
