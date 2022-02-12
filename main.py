@@ -4,7 +4,7 @@ from MatrixCheck import MatrixCheck
 from MatrixGeneration import MatrixGeneration
 
 if __name__ == '__main__':
-    # Matrix check
+    # Matrix check new
     mc = MatrixCheck()
     mg = MatrixGeneration()
     print('Diagonal matrix from a vector:')
