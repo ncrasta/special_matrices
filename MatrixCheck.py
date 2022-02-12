@@ -1,5 +1,6 @@
 import numpy as np
 from MatrixGeneration import MatrixGeneration as mg
+from typing import Optional
 
 
 class MatrixCheck(object):
@@ -11,7 +12,7 @@ class MatrixCheck(object):
             return False
 
     @staticmethod
-    def is_constant_matrix(self, C) -> bool:
+    def is_constant_matrix(self, C) -> Optional[bool]:
         if C.ndim == 2:
             c = C[0, 0]
             for i in range(C.shape[0]):
@@ -19,9 +20,11 @@ class MatrixCheck(object):
                     if C[i, j] != c:
                         return False
             return True
+        else:
+            return None
 
     @staticmethod
-    def is_binary_matrix(self, B):
+    def is_binary_matrix(B):
         if B.ndim == 2 and set(B.flatten()) == {0, 1}:
             return True
         else:
@@ -39,58 +42,70 @@ class MatrixCheck(object):
         else:
             return False
 
-    def is_bisymmetric_matrix(self, B) -> bool:
+    def is_bisymmetric_matrix(self, B) -> Optional[bool]:
         if self.is_square_matrix(B):
             E = mg.exchange_matrix(B.shape[0])
             if B == B.T and np.dot(B, E) == np.dot(E, B):
                 return True
             else:
                 return False
+        else:
+            return None
 
     @staticmethod
-    def is_toeplitz_matrix(T) -> bool:
+    def is_toeplitz_matrix(T) -> Optional[bool]:
         if T.ndim == 2:
             for r in range(1, T.shape[0] - 1):
                 for c in range(T.shape[1] - 1):
                     if T[r, c] != T[r + 1, c + 1]:
                         return False
             return True
+        else:
+            return None
 
     @staticmethod
-    def is_positive_matrix(P) -> bool:
+    def is_positive_matrix(P) -> Optional[bool]:
         if P.ndim == 2:
             for r in range(1, P.shape[0]):
                 for c in range(P.shape[1]):
                     if P[r, c] <= 0:
                         return False
             return True
+        else:
+            return None
 
     @staticmethod
-    def is_nonnegative_matrix(P) -> bool:
+    def is_nonnegative_matrix(P) -> Optional[bool]:
         if P.ndim == 2:
             for r in range(1, P.shape[0]):
                 for c in range(P.shape[1]):
                     if P[r, c] < 0:
                         return False
             return True
+        else:
+            return None
 
     @staticmethod
-    def is_row_stochastic_matrix(self, S) -> bool:
+    def is_row_stochastic_matrix(self, S) -> Optional[bool]:
         if self.is_nonnegative_matrix(S):
             r, c = S.shape
             if (S.sum(axis=0) == np.ones(r)).all():
                 return True
             else:
                 return False
+        else:
+            return None
 
     @staticmethod
-    def is_column_stochastic_matrix(self, S):
+    def is_column_stochastic_matrix(self, S) -> Optional[bool]:
         if self.is_nonnegative_matrix(S):
             r, c = S.shape
             if (S.sum(axis=1) == np.ones(c)).all():
                 return True
             else:
                 return False
+        else:
+            return None
 
     @staticmethod
     def is_doubly_stochastic_matrix(self, S) -> bool:
@@ -99,72 +114,80 @@ class MatrixCheck(object):
         else:
             return False
 
-    def is_involutory_matrix(self, I) -> bool:
-        if self.is_square_matrix(I) and np.dot(I, I) == np.eye(I.shape[0]):
+    def is_involutory_matrix(self, Id) -> bool:
+        if self.is_square_matrix(Id) and np.dot(Id, Id) == np.eye(Id.shape[0]):
             return True
         else:
             return False
 
-    def is_skew_involutory_matrix(self, I) -> bool:
-        if self.is_square_matrix(I) and np.dot(I, I) == -np.eye(I.shape[0]):
+    def is_skew_involutory_matrix(self, Id) -> bool:
+        if self.is_square_matrix(Id) and np.dot(Id, Id) == -np.eye(Id.shape[0]):
             return True
         else:
             return False
 
-    def is_idempotent_matrix(self, I) -> bool:
-        if self.is_square_matrix(I) and np.dot(I, I) == I:
+    def is_idempotent_matrix(self, Id) -> bool:
+        if self.is_square_matrix(Id) and np.dot(Id, Id) == Id:
             return True
         else:
             return False
 
-    def is_skewidempotent_matrix(self, I) -> bool:
-        if self.is_square_matrix(I) and np.dot(I, I) == -I:
+    def is_skewidempotent_matrix(self, Id) -> bool:
+        if self.is_square_matrix(Id) and np.dot(Id, Id) == -Id:
             return True
         else:
             return False
 
-    def is_tripotent_matrix(self, I) -> bool:
-        if self.is_square_matrix(I) and np.dot(I, np.dot(I, I)) == I:
+    def is_tripotent_matrix(self, Id) -> bool:
+        if self.is_square_matrix(Id) and np.dot(Id, np.dot(Id, Id)) == Id:
             return True
         else:
             return False
 
-    def is_nillpotent_matrix(self, N) -> bool:
+    def is_nillpotent_matrix(self, N) -> Optional[bool]:
         if self.is_square_matrix(N):
             if np.linalg.eigvals(N).min() == 0 and np.linalg.eigvals(N).max() == 0:
                 return True
             else:
                 return False
         else:
-            return False
+            return None
 
-    def is_unipotent_matrix(self, I):
-        if self.is_square_matrix(I):
-            return self.is_nillpotent_matrix(self, I - np.eye(I.shape[0]))
+    def is_unipotent_matrix(self, Id) -> Optional[bool]:
+        if self.is_square_matrix(Id):
+            return self.is_nillpotent_matrix(Id - np.eye(Id.shape[0]))
+        else:
+            return None
 
-    def is_diagonal_matrix(self, D) -> bool:
+    def is_diagonal_matrix(self, D) -> Optional[bool]:
         if self.is_square_matrix(D):
             for i in range(D.shape[0]):
                 for j in range(D.shape[1]):
                     if i != j and D[i, j] != 0:
                         return False
             return True
+        else:
+            return None
 
-    def is_orthogonal_matrix(self, R) -> bool:
+    def is_orthogonal_matrix(self, R) -> Optional[bool]:
         if self.is_square_matrix(R):
             if np.dot(R.T, R) == np.eye(R.shape[0]):
                 return True
             else:
                 return False
+        else:
+            return None
 
-    def is_rotation_matrix(self, R) -> bool:
+    def is_rotation_matrix(self, R) -> Optional[bool]:
         if self.is_square_matrix(R):
-            if self.is_orthogonal_matrix(self, R) and np.linalg.det(R) == 1:
+            if self.is_orthogonal_matrix(R) and np.linalg.det(R) == 1:
                 return True
             else:
                 return False
+        else:
+            return None
 
-    def is_hankel_matrix(self, H) -> bool:
+    def is_hankel_matrix(self, H) -> Optional[bool]:
         if self.is_symmetric_matrix(H):
             for c in range(H.shape[1]):
                 for r in range(c):
@@ -172,8 +195,10 @@ class MatrixCheck(object):
                         if H[r, c] != H[r + k, c - k]:
                             return False
             return True
+        else:
+            return None
 
-    def is_diagonallydominant_matrix(self, D) -> bool:
+    def is_diagonallydominant_matrix(self, D) -> Optional[bool]:
         if self.is_square_matrix(D):
             d = np.diag(np.abs(D))
             s = np.sum(np.abs(D), axis=1) - d
@@ -181,6 +206,8 @@ class MatrixCheck(object):
                 return False
 
             return True
+        else:
+            return None
 
     def is_permutation_matrix(self, P) -> bool:
         if self.is_square_matrix(P):
@@ -188,11 +215,11 @@ class MatrixCheck(object):
                 return True
         return False
 
-    def is_positive_definite_matrix(self, P):
-        if self.is_symmetric_matrix(self, P):
+    def is_positive_definite_matrix(self, P) -> Optional[bool]:
+        if self.is_symmetric_matrix(P):
             return np.all(np.linalg.eigvals(P) > 0)
+        else:
+            return None
 
-    def is_negative_definite_matrix(self, P):
-        return self.is_positive_definite_matrix(self, -P)
-
-
+    def is_negative_definite_matrix(self, P) -> Optional[bool]:
+        return self.is_positive_definite_matrix(-P)
