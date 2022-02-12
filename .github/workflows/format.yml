@@ -5,3 +5,12 @@ on:
 	push:
 		branches:
 			- main
+<<<<<<< HEAD
+=======
+
+jobs:
+	pre-commit:
+		runs-on: ubuntu-latest
+		steps:
+		- uses: pre-commit/actions@v2.0.0
+>>>>>>> 1ee3e3a60289ae1970c7c92fca4e6cafca3ed275
