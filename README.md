@@ -5,7 +5,7 @@
 
 [![CI build](https://github.com/crasta/matrix_generation_checking/actions/workflows/python-app.yml/badge.svg)](https://github.com/crasta/matrix_generation_checking/actions/workflows/python-app.yml) [![CodeQL](https://github.com/ossf/scorecard-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ossf/scorecard-action/actions/workflows/codeql-analysis.yml) [![Scorecards supply-chain security](https://github.com/crasta/matrix_generation_checking/actions/workflows/scorecards-analysis.yml/badge.svg)](https://github.com/crasta/matrix_generation_checking/actions/workflows/scorecards-analysis.yml) [![pre-commit](https://github.com/crasta/matrix_generation_checking/actions/workflows/format.yml/badge.svg)](https://github.com/crasta/matrix_generation_checking/actions/workflows/format.yml)
 
-[![issue](https://github.com/issues/matrix_generation_checking)
+[![issue](/github/issues/matrix_generation_checking)
 
 
 # Generation and checking of special types of matrices
