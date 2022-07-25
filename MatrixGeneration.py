@@ -1,9 +1,10 @@
 import numpy as np
-
+from typing import Tuple
 
 class MatrixGeneration(object):
+    """ This is class to generate some special type of matrices """
     @staticmethod
-    def exchange_matrix(n):
+    def exchange_matrix(n: int) -> np.ndarray:
         E = np.zeros((n, n))
         for r in range(n):
             for c in range(n):
@@ -12,7 +13,7 @@ class MatrixGeneration(object):
         return E
 
     @staticmethod
-    def skew_symmetric_matrix(x):
+    def skew_symmetric_matrix(x: np.ndarray) -> np.ndarray:
         if len(x) == 3:
             S = np.array([[0, -x[2], x[1]],
                           [x[2], 0, -x[0]],
@@ -22,7 +23,7 @@ class MatrixGeneration(object):
             raise ValueError('Dimension {} is not supported. \
                               Use only 3 instead'.format(len(x)))
 
-    def random_rotation_matrix(self, dim=3):
+    def random_rotation_matrix(self, dim=3) -> np.ndarray:
         if dim == 2:
             theta = np.random.random()
             c, s = np.cos(2 * np.pi * theta), np.sin(2 * np.pi * theta)
@@ -41,7 +42,7 @@ class MatrixGeneration(object):
                               Use 2 or 3 instead'.format(dim))
 
     @staticmethod
-    def constant_matrix(self, size, c):
+    def constant_matrix(self, size: Tuple[int, int], c: float) -> np.ndarray:
         m, n = size
         C = np.zeros((m, n))
         C[:, :] = c
