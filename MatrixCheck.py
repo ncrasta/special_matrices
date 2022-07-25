@@ -6,10 +6,7 @@ from typing import Optional
 class MatrixCheck(object):
     @staticmethod
     def is_square_matrix(A: np.ndarray) -> bool:
-        if A.ndim == 2 and A.shape[0] == A.shape[1]:
-            return True
-        else:
-            return False
+        return True if (A.ndim == 2 and A.shape[0] == A.shape[1]) else False
 
     @staticmethod
     def is_constant_matrix(self, C: np.ndarray) -> Optional[bool]:
@@ -25,22 +22,13 @@ class MatrixCheck(object):
 
     @staticmethod
     def is_binary_matrix(B: np.ndarray):
-        if B.ndim == 2 and set(B.flatten()) == {0, 1}:
-            return True
-        else:
-            return False
+        return True if (B.ndim == 2 and set(B.flatten()) == {0, 1}) else False
 
     def is_symmetric_matrix(self, S: np.ndarray) -> bool:
-        if self.is_square_matrix(S) and S.T == S:
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(S) and S.T == S) else False
 
     def is_skewsymmetric_matrix(self, S: np.ndarray) -> bool:
-        if self.is_square_matrix(S) and S.T == -S:
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(S) and S.T == -S) else False
 
     def is_bisymmetric_matrix(self, B: np.ndarray) -> Optional[bool]:
         if self.is_square_matrix(B):
@@ -109,40 +97,22 @@ class MatrixCheck(object):
 
     @staticmethod
     def is_doubly_stochastic_matrix(self, S: np.ndarray) -> bool:
-        if self.is_row_stochastic_matrix(S) and self.is_column_stochastic_matrix(S):
-            return True
-        else:
-            return False
+        return True if (self.is_row_stochastic_matrix(S) and self.is_column_stochastic_matrix(S)) else False
 
     def is_involutory_matrix(self, Id: np.ndarray) -> bool:
-        if self.is_square_matrix(Id) and np.dot(Id, Id) == np.eye(Id.shape[0]):
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(Id) and np.dot(Id, Id) == np.eye(Id.shape[0])) else False
 
     def is_skew_involutory_matrix(self, Id: np.ndarray) -> bool:
-        if self.is_square_matrix(Id) and np.dot(Id, Id) == -np.eye(Id.shape[0]):
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(Id) and np.dot(Id, Id) == -np.eye(Id.shape[0])) else False
 
     def is_idempotent_matrix(self, Id: np.ndarray) -> bool:
-        if self.is_square_matrix(Id) and np.dot(Id, Id) == Id:
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(Id) and np.dot(Id, Id) == Id) else False
 
     def is_skewidempotent_matrix(self, Id: np.ndarray) -> bool:
-        if self.is_square_matrix(Id) and np.dot(Id, Id) == -Id:
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(Id) and np.dot(Id, Id) == -Id) else False
 
     def is_tripotent_matrix(self, Id: np.ndarray) -> bool:
-        if self.is_square_matrix(Id) and np.dot(Id, np.dot(Id, Id)) == Id:
-            return True
-        else:
-            return False
+        return True if (self.is_square_matrix(Id) and np.dot(Id, np.dot(Id, Id)) == Id) else False
 
     def is_nillpotent_matrix(self, N: np.ndarray) -> Optional[bool]:
         if self.is_square_matrix(N):
@@ -154,10 +124,7 @@ class MatrixCheck(object):
             return None
 
     def is_unipotent_matrix(self, Id: np.ndarray) -> Optional[bool]:
-        if self.is_square_matrix(Id):
-            return self.is_nillpotent_matrix(Id - np.eye(Id.shape[0]))
-        else:
-            return None
+        return self.is_nillpotent_matrix(Id - np.eye(Id.shape[0])) if self.is_square_matrix(Id) else None
 
     def is_diagonal_matrix(self, D: np.ndarray) -> Optional[bool]:
         if self.is_square_matrix(D):
@@ -216,10 +183,7 @@ class MatrixCheck(object):
         return False
 
     def is_positive_definite_matrix(self, P: np.ndarray) -> Optional[bool]:
-        if self.is_symmetric_matrix(P):
-            return np.all(np.linalg.eigvals(P) > 0)
-        else:
-            return None
+        return np.all(np.linalg.eigvals(P) > 0) if self.is_symmetric_matrix(P) else None
 
     def is_negative_definite_matrix(self, P: np.ndarray) -> Optional[bool]:
         return self.is_positive_definite_matrix(-P)
