@@ -47,3 +47,7 @@ class MatrixGeneration(object):
         C = np.zeros((m, n))
         C[:, :] = c
         return C
+
+    @staticmethod
+    def unit_imaginary_matrix(n: int) -> np.ndarray:
+        return np.block([[np.zeros((n,n)),  np.eye(n)], [-np.eye(n), np.zeros((n,n))]])
