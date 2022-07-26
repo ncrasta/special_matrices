@@ -187,3 +187,9 @@ class MatrixCheck(object):
 
     def is_negative_definite_matrix(self, P: np.ndarray) -> Optional[bool]:
         return self.is_positive_definite_matrix(-P)
+    
+    def is_hamiltonian_matrix(self, A: np.ndarray) -> bool:
+        assert self.is_square_matrix(A), 'Input matrix is not a square matrix"
+        assert (A.shape[0] %2 == 0), 'Input matrix is not of even dimensoional matrix'
+        J = mg.unit_imaginary_matrix(A.shape[0]/2)
+        return (np.dot(J, np.dot(A.T, J)) == A)
